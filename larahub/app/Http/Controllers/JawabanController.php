@@ -19,6 +19,6 @@ class JawabanController extends Controller
         $data['id_pertanyaan'] = $id;
         $data['created_at'] = date('Y-m-d H:i:s');
         JawabanModel::saveJawaban($data);
-        redirect('jawaban/'.$id);
+        return redirect('jawaban/'.$id);
     }
 }

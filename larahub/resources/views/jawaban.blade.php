@@ -1,7 +1,7 @@
 @extends('adminlte.master')
 
 @section('content_title')
-    Pertanyaan {{$data['pertanyaan'][0]->title}}
+    Jawaban Pertanyaan
 @endsection
 
 @section('content')
@@ -9,7 +9,21 @@
         @csrf
         <div class="form-group row">
             <label class="col-3">Pertanyaan</label>
-            <span class="badge badge-dark">{{$data['pertanyaan'][0]->content}}</span>
+            <span class="label">{{$data['pertanyaan'][0]->content}}</span>
+        </div>
+        <div class="form-group row">
+            <label class="col-3">Tanggal dibuat</label>
+            <span class="label">{{date('d F Y', strtotime($data['pertanyaan'][0]->created_at))}}</span>
+        </div>
+        <div class="form-group row">
+            <label class="col-3">Terakhir diupdate</label>
+            <span class="label">
+                <?php if(empty($data['pertanyaan'][0]->updated_at)){
+                    echo "-";
+                } else {
+                    echo date('d F Y', strtotime($data['pertanyaan'][0]->updated_at));
+                } ?>
+            </span>
         </div>
         <div class="form-group row">
             <label class="col-3">Jawaban anda</label>
@@ -30,6 +44,7 @@
         <tr>
             <td>#</td>
             <td>Jawaban</td>
+            <td>Tanggal Jawaban</td>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +52,7 @@
             <tr>
                 <td>{{$key+1}}</td>
                 <td>{{$catJawaban->content}}</td>
+                <td>{{date('d F Y', strtotime($catJawaban->created_at))}}</td>
             </tr>
         @endforeach
         </tbody>

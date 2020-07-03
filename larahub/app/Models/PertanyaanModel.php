@@ -21,4 +21,17 @@ class PertanyaanModel extends Model
         $new_data = DB::table('pertanyaan')->insert($data);
         return $new_data;
     }
+
+    public static function updateData($id, $request){
+        $update = DB::table('pertanyaan')
+                            ->where('id', $id)
+                            ->update($request);
+        return $update;
+    }
+
+    public static function deleteData($id){
+        $delete = DB::table('pertanyaan')
+                        ->delete($id);
+        return $delete;
+    }
 }

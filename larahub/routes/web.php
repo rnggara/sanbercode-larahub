@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/pertanyaan', 'PertanyaanController@index');
 Route::get('/pertanyaan/create', 'PertanyaanController@formPertanyaan');
 Route::get('/jawaban/{id}', 'JawabanController@index');
+Route::get('pertanyaan/{id}/edit', 'PertanyaanController@editPertanyaan');
 
 Route::post('/pertanyaan', 'PertanyaanController@savePertanyaan');
 Route::post('/jawaban/{id}', 'JawabanController@save');
-
+Route::put('pertanyaan/{id}/edit', 'PertanyaanController@updatePertanyaan');
+Route::delete('pertanyaan/{id}', 'PertanyaanController@deletePertanyaan');

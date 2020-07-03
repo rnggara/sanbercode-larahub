@@ -25,7 +25,15 @@
                     <td>{{$key+1}}</td>
                     <td>{{$catData->title}}</td>
                     <td>{{$catData->content}}</td>
-                    <td><a href="/jawaban/{{$catData->id}}" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a></td>
+                    <td class="text-center">
+                        <a href="/jawaban/{{$catData->id}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                        <a href="/pertanyaan/{{$catData->id}}/edit" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                        <form method="post" action="/pertanyaan/{{$catData->id}}" style="display: inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Delete data?');"><i class="fa fa-trash"></i></button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
